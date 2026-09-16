@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { CheckCircle2 } from 'lucide-react'
 import api from '../api/client'
 
 const ubicacionLabel = {
@@ -74,8 +75,8 @@ export default function Reservar() {
     const reserva = confirmacion.data
     return (
       <div className="mx-auto flex min-h-[70vh] max-w-xl flex-col items-center justify-center px-5 py-16 text-center">
-        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-forest/10 text-3xl text-forest">
-          ✓
+        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-forest/10 text-forest">
+          <CheckCircle2 className="h-8 w-8" />
         </div>
         <h1 className="font-display text-3xl font-bold text-charcoal">¡Reserva Confirmada!</h1>
         <p className="mt-3 text-charcoal/70">{confirmacion.message}</p>

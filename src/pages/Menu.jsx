@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { Leaf } from 'lucide-react'
 import api from '../api/client'
 import PlatoCard from '../components/PlatoCard'
 import Spinner from '../components/Spinner'
@@ -66,13 +67,13 @@ export default function Menu() {
         ))}
         <button
           onClick={() => setSoloVegetariano((v) => !v)}
-          className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
+          className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition ${
             soloVegetariano
               ? 'border-forest bg-forest text-white'
               : 'border-charcoal/20 text-charcoal/70 hover:border-forest hover:text-forest'
           }`}
         >
-          🌱 Vegetariano
+          <Leaf className="h-4 w-4" /> Vegetariano
         </button>
       </div>
 

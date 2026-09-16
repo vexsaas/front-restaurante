@@ -1,3 +1,5 @@
+import { MapPin } from 'lucide-react'
+
 export default function Contacto() {
   return (
     <div className="mx-auto max-w-6xl px-5 py-16">
@@ -48,8 +50,8 @@ export default function Contacto() {
             }}
           />
           <div className="relative z-10 flex flex-col items-center gap-3 px-8 text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-terracotta text-2xl shadow-lg">
-              📍
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-terracotta text-cream shadow-lg">
+              <MapPin className="h-7 w-7" />
             </div>
             <p className="font-display text-xl font-semibold">Restaurante Amaranto</p>
             <p className="text-sm text-cream/80">Av. Amazonas N34-451 y Rumipamba, Quito</p>
