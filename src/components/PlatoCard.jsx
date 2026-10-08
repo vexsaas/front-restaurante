@@ -1,7 +1,7 @@
 export default function PlatoCard({ plato }) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-charcoal/5 transition hover:-translate-y-1 hover:shadow-lg">
-      <div className="relative h-48 overflow-hidden">
+    <article className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-charcoal/5 transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl">
+      <div className="relative h-56 overflow-hidden">
         <img
           src={plato.imagen_url}
           alt={plato.nombre}

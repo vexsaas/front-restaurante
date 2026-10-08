@@ -14,7 +14,8 @@
   --color-forest-dark: #1a2a1f;
   --color-forest-light: #3f5c46;
   --color-charcoal: #2a211a;
-  --color-gold: #c99a3c;
+  --color-gold: #d9a441;
+  --color-carbon: #17100c;
 }
 
 html {
@@ -35,4 +36,24 @@ h1, h2, h3, h4, .font-display {
 ::selection {
   background: var(--color-terracotta);
   color: white;
+}
+
+/* Zoom lento de la foto del hero */
+.hero-zoom {
+  animation: hero-zoom 22s ease-out forwards;
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-zoom {
+    animation: none;
+  }
 }

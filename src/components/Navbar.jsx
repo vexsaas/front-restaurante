@@ -12,10 +12,10 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-forest text-cream shadow-md">
+    <header className="sticky top-0 z-50 border-b border-gold/20 bg-forest-dark/95 text-cream shadow-md backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
         <NavLink to="/" className="font-display text-2xl font-bold tracking-wide text-cream">
-          Restaurante <span className="text-terracotta-light">Amaranto</span>
+          Restaurante <em className="text-gold">Amaranto</em>
         </NavLink>
 
         <nav className="hidden gap-8 md:flex">
