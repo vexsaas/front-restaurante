@@ -43,10 +43,14 @@ export default function App() {
 
 function NotFound() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-cream text-center">
-      <p className="font-display text-6xl font-bold text-terracotta">404</p>
-      <p className="text-charcoal/70">Página no encontrada.</p>
-      <a href="/" className="mt-4 rounded-full bg-forest px-6 py-2 text-sm font-semibold text-white">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-forest-dark px-5 text-center">
+      <p className="font-luxury text-xs font-bold uppercase tracking-[0.4em] text-gold">Mesa no encontrada</p>
+      <p className="text-gradient-gold font-display text-8xl font-bold leading-none">404</p>
+      <p className="max-w-sm text-cream/70">Esta página no está en nuestra carta. Volvamos a un lugar conocido.</p>
+      <a
+        href="/"
+        className="btn-gold-luxury mt-4 rounded-full px-8 py-3 text-sm font-bold uppercase tracking-wide text-carbon"
+      >
         Volver al inicio
       </a>
     </div>
