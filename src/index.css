@@ -1,21 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Poppins:wght@300;400;500;600;700&display=swap');
 @import 'tailwindcss';
 
 @theme {
   --font-display: 'Playfair Display', ui-serif, Georgia, serif;
+  --font-serif-luxury: 'Cinzel', serif;
   --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
 
-  --color-cream: #fbf3e6;
-  --color-cream-dark: #f2e6d2;
+  --color-cream: #fcf6ec;
+  --color-cream-light: #fefcf8;
+  --color-cream-dark: #f0e3ce;
   --color-terracotta: #b3451e;
   --color-terracotta-dark: #8c3617;
   --color-terracotta-light: #d97a4a;
-  --color-forest: #29402f;
-  --color-forest-dark: #1a2a1f;
-  --color-forest-light: #3f5c46;
-  --color-charcoal: #2a211a;
+  --color-forest: #233a2a;
+  --color-forest-dark: #142218;
+  --color-forest-light: #33533c;
+  --color-charcoal: #251c16;
   --color-gold: #d9a441;
-  --color-carbon: #17100c;
+  --color-gold-light: #f5d47a;
+  --color-gold-dark: #a67622;
+  --color-carbon: #120b08;
+
+  /* Tokens que cambian con el tema */
+  --color-fondo: #fcf6ec;
+  --color-fondo-alt: #f0e3ce;
+  --color-fondo-suave: #fefcf8;
+  --color-papel: #ffffff;
+  --color-titulo: #142218;
+  --color-verde: #233a2a;
+}
+
+/* Modo oscuro: bosque de noche con texto marfil; el dorado se mantiene */
+:root[data-tema='oscuro'] {
+  --color-fondo: #0d1510;
+  --color-fondo-alt: #121d16;
+  --color-fondo-suave: #17251b;
+  --color-papel: #16241a;
+  --color-titulo: #f6edd9;
+  --color-verde: #9fcaa8;
+  --color-charcoal: #ece2cf;
+  --color-gold-dark: #e5b95c;
+  --color-terracotta: #e58a5c;
+  --color-terracotta-dark: #cf7446;
+}
+
+/* El cambio de tema lo anima TemaToggle con un círculo; aquí se anula el fundido por defecto */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 html {
@@ -25,35 +58,119 @@ html {
 body {
   margin: 0;
   font-family: var(--font-sans);
-  background-color: var(--color-cream);
+  background-color: var(--color-fondo);
   color: var(--color-charcoal);
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, .font-display {
   font-family: var(--font-display);
 }
 
-::selection {
-  background: var(--color-terracotta);
-  color: white;
+.font-luxury {
+  font-family: var(--font-serif-luxury);
 }
 
-/* Zoom lento de la foto del hero */
+::selection {
+  background: var(--color-gold);
+  color: var(--color-carbon);
+}
+
+/* Luxury Gold Text Gradient */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #fff2cc 0%, #e5b95c 50%, #b88628 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-terracotta {
+  background: linear-gradient(135deg, #f59e6c 0%, #b3451e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism Classes */
+.glass-dark {
+  background: rgba(20, 34, 24, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(217, 164, 65, 0.25);
+}
+
+.glass-card {
+  background: color-mix(in srgb, var(--color-papel) 85%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(217, 164, 65, 0.18);
+}
+
+/* Gold Shimmer Button Effect */
+.btn-gold-luxury {
+  background: linear-gradient(135deg, #e5b95c 0%, #d9a441 50%, #b88628 100%);
+  box-shadow: 0 8px 24px -4px rgba(217, 164, 65, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-gold-luxury:hover {
+  background: linear-gradient(135deg, #fae08f 0%, #e5b95c 50%, #c9932d 100%);
+  box-shadow: 0 12px 30px -2px rgba(217, 164, 65, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Slow Hero Zoom */
 .hero-zoom {
-  animation: hero-zoom 22s ease-out forwards;
+  animation: hero-zoom 26s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
 }
 
 @keyframes hero-zoom {
-  from {
-    transform: scale(1.12);
+  0% {
+    transform: scale(1.03);
   }
-  to {
-    transform: scale(1);
+  100% {
+    transform: scale(1.15);
   }
 }
 
+/* Floating Animation for decorative badges */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #142218;
+}
+::-webkit-scrollbar-thumb {
+  background: #d9a441;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f5d47a;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-zoom {
+  .hero-zoom, .animate-float {
     animation: none;
   }
+}
+
+/* Mapa incrustado: sepia suave de día; de noche se invierte para que no deslumbre */
+.mapa-tema {
+  filter: sepia(0.3) saturate(0.8);
+}
+
+:root[data-tema='oscuro'] .mapa-tema {
+  filter: invert(0.92) hue-rotate(180deg) saturate(0.5) brightness(0.95) contrast(0.9);
 }
