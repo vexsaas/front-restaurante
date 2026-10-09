@@ -1,6 +1,6 @@
 const estilos = {
-  pendiente: 'bg-gold/20 text-gold border-gold/40',
-  confirmada: 'bg-forest/15 text-forest border-forest/40',
+  pendiente: 'bg-gold/20 text-gold-dark border-gold/50',
+  confirmada: 'bg-forest/15 text-verde border-forest/40',
   cancelada: 'bg-red-100 text-red-700 border-red-300',
   completada: 'bg-charcoal/10 text-charcoal border-charcoal/20',
 }

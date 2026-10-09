@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowRight, CalendarCheck, Clock, Table2, Users } from 'lucide-react'
 import api from '../../api/client'
 import StatCard from '../../components/StatCard'
 import EstadoBadge from '../../components/EstadoBadge'
@@ -20,30 +22,45 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1 className="font-display text-2xl font-bold text-charcoal">Dashboard</h1>
-      <p className="mt-1 text-sm text-charcoal/60">Resumen de la actividad del restaurante hoy.</p>
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p className="font-luxury text-[11px] font-bold uppercase tracking-[0.35em] text-gold-dark">
+            {new Date().toLocaleDateString('es-EC', { weekday: 'long', day: 'numeric', month: 'long' })}
+          </p>
+          <h1 className="mt-1 font-display text-3xl font-bold text-titulo">Así va el servicio de hoy</h1>
+          <p className="mt-1 text-sm text-charcoal/60">Resumen de la actividad del restaurante.</p>
+        </div>
+        <Link
+          to="/admin/reservas"
+          className="btn-gold-luxury inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wide text-carbon"
+        >
+          Gestionar reservas
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard label="Reservas Hoy" value={data.reservas_hoy_total} accent="terracotta" />
-        <StatCard label="Pendientes" value={data.reservas_pendientes} accent="gold" />
+        <StatCard label="Reservas Hoy" value={data.reservas_hoy_total} accent="terracotta" icon={CalendarCheck} />
+        <StatCard label="Pendientes" value={data.reservas_pendientes} accent="gold" icon={Clock} />
         <StatCard
           label="Ocupación Esta Noche"
           value={data.ocupacion_esta_noche}
           hint="Personas desde las 18:00"
           accent="forest"
+          icon={Users}
         />
-        <StatCard label="Mesas Totales" value={data.total_mesas} accent="terracotta" />
+        <StatCard label="Mesas Totales" value={data.total_mesas} accent="terracotta" icon={Table2} />
       </div>
 
       <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div className="lg:col-span-2">
-          <h2 className="mb-4 font-display text-lg font-semibold text-charcoal">Reservas de Hoy</h2>
-          <div className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-charcoal/5">
+          <h2 className="mb-4 font-display text-xl font-semibold text-titulo">Reservas de Hoy</h2>
+          <div className="overflow-hidden rounded-2xl bg-papel shadow-md shadow-charcoal/5 ring-1 ring-gold/20">
             {data.reservas_hoy.length === 0 ? (
               <p className="p-6 text-sm text-charcoal/50">No hay reservas registradas para hoy.</p>
             ) : (
               <table className="w-full text-left text-sm">
-                <thead className="bg-cream-dark text-xs uppercase text-charcoal/50">
+                <thead className="bg-forest-dark text-[11px] uppercase tracking-wider text-gold">
                   <tr>
                     <th className="px-4 py-3">Hora</th>
                     <th className="px-4 py-3">Cliente</th>
@@ -54,7 +71,7 @@ export default function Dashboard() {
                 </thead>
                 <tbody className="divide-y divide-charcoal/5">
                   {data.reservas_hoy.map((reserva) => (
-                    <tr key={reserva.id}>
+                    <tr key={reserva.id} className="transition hover:bg-cream-light">
                       <td className="px-4 py-3 font-medium">{reserva.hora}</td>
                       <td className="px-4 py-3">{reserva.cliente_nombre}</td>
                       <td className="px-4 py-3">{reserva.num_personas}</td>
@@ -71,17 +88,17 @@ export default function Dashboard() {
         </div>
 
         <div>
-          <h2 className="mb-4 font-display text-lg font-semibold text-charcoal">Platos Destacados</h2>
+          <h2 className="mb-4 font-display text-xl font-semibold text-titulo">Platos Destacados</h2>
           <div className="space-y-3">
             {data.platos_destacados.map((plato) => (
               <div
                 key={plato.id}
-                className="flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm ring-1 ring-charcoal/5"
+                className="flex items-center gap-3 rounded-xl bg-papel p-3 shadow-sm ring-1 ring-gold/20 transition hover:shadow-md"
               >
-                <img src={plato.imagen_url} alt={plato.nombre} className="h-12 w-12 rounded-lg object-cover" />
+                <img src={plato.imagen_url} alt={plato.nombre} className="h-14 w-14 rounded-lg object-cover" />
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-medium text-charcoal">{plato.nombre}</p>
-                  <p className="text-xs text-charcoal/50">${Number(plato.precio).toFixed(2)}</p>
+                  <p className="font-display text-sm font-semibold text-terracotta">${Number(plato.precio).toFixed(2)}</p>
                 </div>
               </div>
             ))}

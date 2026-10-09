@@ -41,7 +41,7 @@ export default function Reservas() {
     <div>
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="font-display text-2xl font-bold text-charcoal">Reservas</h1>
+          <h1 className="font-display text-3xl font-bold text-titulo">Reservas</h1>
           <p className="mt-1 text-sm text-charcoal/60">Gestiona las reservas de los clientes.</p>
         </div>
 
@@ -49,7 +49,7 @@ export default function Reservas() {
           <select
             value={filtros.estado}
             onChange={(e) => setFiltros({ ...filtros, estado: e.target.value })}
-            className="rounded-lg border border-charcoal/15 px-3 py-2 text-sm focus:border-terracotta focus:outline-none"
+            className="rounded-xl border border-charcoal/15 bg-fondo-suave px-3 py-2 text-sm focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
           >
             <option value="">Todos los estados</option>
             {estados.map((estado) => (
@@ -62,7 +62,7 @@ export default function Reservas() {
             type="date"
             value={filtros.fecha}
             onChange={(e) => setFiltros({ ...filtros, fecha: e.target.value })}
-            className="rounded-lg border border-charcoal/15 px-3 py-2 text-sm focus:border-terracotta focus:outline-none"
+            className="rounded-xl border border-charcoal/15 bg-fondo-suave px-3 py-2 text-sm focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
           />
           {(filtros.estado || filtros.fecha) && (
             <button
@@ -78,9 +78,9 @@ export default function Reservas() {
       {loading ? (
         <Spinner label="Cargando reservas..." />
       ) : (
-        <div className="overflow-x-auto rounded-2xl bg-white shadow-sm ring-1 ring-charcoal/5">
+        <div className="overflow-x-auto rounded-2xl bg-papel shadow-md shadow-charcoal/5 ring-1 ring-gold/20">
           <table className="w-full min-w-[900px] text-left text-sm">
-            <thead className="bg-cream-dark text-xs uppercase text-charcoal/50">
+            <thead className="bg-forest-dark text-[11px] uppercase tracking-wider text-gold">
               <tr>
                 <th className="px-4 py-3">Fecha</th>
                 <th className="px-4 py-3">Hora</th>
@@ -101,7 +101,7 @@ export default function Reservas() {
                 </tr>
               ) : (
                 reservas.map((reserva) => (
-                  <tr key={reserva.id}>
+                  <tr key={reserva.id} className="transition hover:bg-cream-light">
                     <td className="px-4 py-3">{reserva.fecha}</td>
                     <td className="px-4 py-3">{reserva.hora}</td>
                     <td className="px-4 py-3 font-medium">{reserva.cliente_nombre}</td>
@@ -120,7 +120,7 @@ export default function Reservas() {
                         <select
                           value={reserva.estado}
                           onChange={(e) => cambiarEstado(reserva, e.target.value)}
-                          className="rounded-lg border border-charcoal/15 px-2 py-1 text-xs focus:border-terracotta focus:outline-none"
+                          className="rounded-xl border border-charcoal/15 bg-fondo-suave px-2 py-1 text-xs focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
                         >
                           {estados.map((estado) => (
                             <option key={estado} value={estado}>

@@ -144,33 +144,33 @@ export default function MenuAdmin() {
 
   return (
     <div>
-      <h1 className="font-display text-2xl font-bold text-charcoal">Gestión del Menú</h1>
+      <h1 className="font-display text-3xl font-bold text-titulo">Gestión del Menú</h1>
       <p className="mt-1 text-sm text-charcoal/60">Administra categorías y platos del restaurante.</p>
 
       {/* Categorías */}
       <section className="mt-8">
-        <h2 className="mb-3 font-display text-lg font-semibold text-charcoal">Categorías</h2>
+        <h2 className="mb-3 font-display text-xl font-semibold text-titulo">Categorías</h2>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <form onSubmit={guardarCategoria} className="space-y-3 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-charcoal/5">
+          <form onSubmit={guardarCategoria} className="space-y-3 rounded-2xl bg-papel p-5 shadow-md shadow-charcoal/5 ring-1 ring-gold/20">
             <input
               type="text"
               placeholder="Nombre de la categoría"
               required
               value={nombreCategoria}
               onChange={(e) => setNombreCategoria(e.target.value)}
-              className="w-full rounded-lg border border-charcoal/15 px-3 py-2 text-sm focus:border-terracotta focus:outline-none"
+              className="w-full rounded-xl border border-charcoal/15 bg-fondo-suave px-3 py-2 text-sm focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
             />
             <input
               type="number"
               placeholder="Orden"
               value={ordenCategoria}
               onChange={(e) => setOrdenCategoria(e.target.value)}
-              className="w-full rounded-lg border border-charcoal/15 px-3 py-2 text-sm focus:border-terracotta focus:outline-none"
+              className="w-full rounded-xl border border-charcoal/15 bg-fondo-suave px-3 py-2 text-sm focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
             />
             <div className="flex gap-2">
               <button
                 type="submit"
-                className="flex-1 rounded-full bg-terracotta py-2 text-sm font-semibold uppercase text-white hover:bg-terracotta-dark"
+                className="btn-gold-luxury flex-1 rounded-full py-2 text-sm font-bold uppercase tracking-wide text-carbon"
               >
                 {editandoCategoriaId ? 'Actualizar' : 'Agregar'}
               </button>
@@ -191,9 +191,9 @@ export default function MenuAdmin() {
           </form>
 
           <div className="lg:col-span-2">
-            <div className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-charcoal/5">
+            <div className="overflow-hidden rounded-2xl bg-papel shadow-md shadow-charcoal/5 ring-1 ring-gold/20">
               <table className="w-full text-left text-sm">
-                <thead className="bg-cream-dark text-xs uppercase text-charcoal/50">
+                <thead className="bg-forest-dark text-[11px] uppercase tracking-wider text-gold">
                   <tr>
                     <th className="px-4 py-3">Orden</th>
                     <th className="px-4 py-3">Nombre</th>
@@ -203,7 +203,7 @@ export default function MenuAdmin() {
                 </thead>
                 <tbody className="divide-y divide-charcoal/5">
                   {categorias.map((categoria) => (
-                    <tr key={categoria.id}>
+                    <tr key={categoria.id} className="transition hover:bg-cream-light">
                       <td className="px-4 py-3">{categoria.orden}</td>
                       <td className="px-4 py-3 font-medium">{categoria.nombre}</td>
                       <td className="px-4 py-3">{platos.filter((p) => p.categoria_id === categoria.id).length}</td>
@@ -211,7 +211,7 @@ export default function MenuAdmin() {
                         <div className="flex justify-end gap-2">
                           <button
                             onClick={() => editarCategoria(categoria)}
-                            className="rounded-lg px-2 py-1 text-xs font-semibold text-forest hover:bg-forest/10"
+                            className="rounded-lg px-2 py-1 text-xs font-semibold text-verde hover:bg-forest/10"
                           >
                             Editar
                           </button>
@@ -234,23 +234,23 @@ export default function MenuAdmin() {
 
       {/* Platos */}
       <section className="mt-12">
-        <h2 className="mb-3 font-display text-lg font-semibold text-charcoal">Platos</h2>
+        <h2 className="mb-3 font-display text-xl font-semibold text-titulo">Platos</h2>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <form onSubmit={guardarPlato} className="space-y-3 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-charcoal/5">
+          <form onSubmit={guardarPlato} className="space-y-3 rounded-2xl bg-papel p-5 shadow-md shadow-charcoal/5 ring-1 ring-gold/20">
             <input
               type="text"
               placeholder="Nombre del plato"
               required
               value={formPlato.nombre}
               onChange={(e) => setFormPlato({ ...formPlato, nombre: e.target.value })}
-              className="w-full rounded-lg border border-charcoal/15 px-3 py-2 text-sm focus:border-terracotta focus:outline-none"
+              className="w-full rounded-xl border border-charcoal/15 bg-fondo-suave px-3 py-2 text-sm focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
             />
             <textarea
               placeholder="Descripción"
               rows={2}
               value={formPlato.descripcion}
               onChange={(e) => setFormPlato({ ...formPlato, descripcion: e.target.value })}
-              className="w-full rounded-lg border border-charcoal/15 px-3 py-2 text-sm focus:border-terracotta focus:outline-none"
+              className="w-full rounded-xl border border-charcoal/15 bg-fondo-suave px-3 py-2 text-sm focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
             />
             <div className="grid grid-cols-2 gap-3">
               <input
@@ -261,13 +261,13 @@ export default function MenuAdmin() {
                 required
                 value={formPlato.precio}
                 onChange={(e) => setFormPlato({ ...formPlato, precio: e.target.value })}
-                className="w-full rounded-lg border border-charcoal/15 px-3 py-2 text-sm focus:border-terracotta focus:outline-none"
+                className="w-full rounded-xl border border-charcoal/15 bg-fondo-suave px-3 py-2 text-sm focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
               />
               <select
                 required
                 value={formPlato.categoria_id}
                 onChange={(e) => setFormPlato({ ...formPlato, categoria_id: e.target.value })}
-                className="w-full rounded-lg border border-charcoal/15 px-3 py-2 text-sm focus:border-terracotta focus:outline-none"
+                className="w-full rounded-xl border border-charcoal/15 bg-fondo-suave px-3 py-2 text-sm focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
               >
                 <option value="">Categoría</option>
                 {categorias.map((c) => (
@@ -282,7 +282,7 @@ export default function MenuAdmin() {
               placeholder="URL de imagen (opcional, se genera una si se deja vacío)"
               value={formPlato.imagen_url}
               onChange={(e) => setFormPlato({ ...formPlato, imagen_url: e.target.value })}
-              className="w-full rounded-lg border border-charcoal/15 px-3 py-2 text-sm focus:border-terracotta focus:outline-none"
+              className="w-full rounded-xl border border-charcoal/15 bg-fondo-suave px-3 py-2 text-sm focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
             />
             <div className="flex flex-wrap gap-4 text-sm text-charcoal/70">
               <label className="flex items-center gap-2">
@@ -317,7 +317,7 @@ export default function MenuAdmin() {
               <button
                 type="submit"
                 disabled={guardandoPlato}
-                className="flex-1 rounded-full bg-terracotta py-2 text-sm font-semibold uppercase text-white hover:bg-terracotta-dark disabled:opacity-60"
+                className="btn-gold-luxury flex-1 rounded-full py-2 text-sm font-bold uppercase tracking-wide text-carbon disabled:opacity-60"
               >
                 {editandoPlatoId ? 'Actualizar' : 'Agregar'}
               </button>
@@ -338,7 +338,7 @@ export default function MenuAdmin() {
               <button
                 onClick={() => setFiltroCategoria('todas')}
                 className={`rounded-full border px-3 py-1.5 text-xs font-medium ${
-                  filtroCategoria === 'todas' ? 'border-terracotta bg-terracotta text-white' : 'border-charcoal/15 text-charcoal/60'
+                  filtroCategoria === 'todas' ? 'border-forest-dark bg-forest-dark text-gold' : 'border-charcoal/15 text-charcoal/60'
                 }`}
               >
                 Todas
@@ -349,7 +349,7 @@ export default function MenuAdmin() {
                   onClick={() => setFiltroCategoria(String(c.id))}
                   className={`rounded-full border px-3 py-1.5 text-xs font-medium ${
                     filtroCategoria === String(c.id)
-                      ? 'border-terracotta bg-terracotta text-white'
+                      ? 'border-forest-dark bg-forest-dark text-gold'
                       : 'border-charcoal/15 text-charcoal/60'
                   }`}
                 >
@@ -358,9 +358,9 @@ export default function MenuAdmin() {
               ))}
             </div>
 
-            <div className="overflow-x-auto rounded-2xl bg-white shadow-sm ring-1 ring-charcoal/5">
+            <div className="overflow-x-auto rounded-2xl bg-papel shadow-md shadow-charcoal/5 ring-1 ring-gold/20">
               <table className="w-full min-w-[700px] text-left text-sm">
-                <thead className="bg-cream-dark text-xs uppercase text-charcoal/50">
+                <thead className="bg-forest-dark text-[11px] uppercase tracking-wider text-gold">
                   <tr>
                     <th className="px-4 py-3">Plato</th>
                     <th className="px-4 py-3">Precio</th>
@@ -371,7 +371,7 @@ export default function MenuAdmin() {
                 </thead>
                 <tbody className="divide-y divide-charcoal/5">
                   {platosFiltrados.map((plato) => (
-                    <tr key={plato.id}>
+                    <tr key={plato.id} className="transition hover:bg-cream-light">
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-3">
                           <img src={plato.imagen_url} alt={plato.nombre} className="h-10 w-10 rounded-lg object-cover" />
@@ -383,7 +383,7 @@ export default function MenuAdmin() {
                         <button
                           onClick={() => alternar(plato, 'disponible')}
                           className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                            plato.disponible ? 'bg-forest/15 text-forest' : 'bg-charcoal/10 text-charcoal/50'
+                            plato.disponible ? 'bg-forest/15 text-verde' : 'bg-charcoal/10 text-charcoal/50'
                           }`}
                         >
                           {plato.disponible ? 'Sí' : 'No'}
@@ -403,7 +403,7 @@ export default function MenuAdmin() {
                         <div className="flex justify-end gap-2">
                           <button
                             onClick={() => editarPlato(plato)}
-                            className="rounded-lg px-2 py-1 text-xs font-semibold text-forest hover:bg-forest/10"
+                            className="rounded-lg px-2 py-1 text-xs font-semibold text-verde hover:bg-forest/10"
                           >
                             Editar
                           </button>

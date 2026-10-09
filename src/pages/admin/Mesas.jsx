@@ -74,12 +74,12 @@ export default function Mesas() {
 
   return (
     <div>
-      <h1 className="font-display text-2xl font-bold text-charcoal">Mesas</h1>
+      <h1 className="font-display text-3xl font-bold text-titulo">Mesas</h1>
       <p className="mt-1 text-sm text-charcoal/60">Administra las mesas disponibles del restaurante.</p>
 
       <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-3">
-        <form onSubmit={guardar} className="space-y-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-charcoal/5">
-          <h2 className="font-display text-lg font-semibold text-charcoal">
+        <form onSubmit={guardar} className="space-y-4 rounded-2xl bg-papel p-6 shadow-md shadow-charcoal/5 ring-1 ring-gold/20">
+          <h2 className="font-display text-xl font-semibold text-titulo">
             {editandoId ? 'Editar mesa' : 'Nueva mesa'}
           </h2>
           <div>
@@ -90,7 +90,7 @@ export default function Mesas() {
               required
               value={form.numero}
               onChange={(e) => setForm({ ...form, numero: e.target.value })}
-              className="w-full rounded-lg border border-charcoal/15 px-3 py-2 text-sm focus:border-terracotta focus:outline-none"
+              className="w-full rounded-xl border border-charcoal/15 bg-fondo-suave px-3 py-2 text-sm focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
             />
           </div>
           <div>
@@ -102,7 +102,7 @@ export default function Mesas() {
               required
               value={form.capacidad}
               onChange={(e) => setForm({ ...form, capacidad: e.target.value })}
-              className="w-full rounded-lg border border-charcoal/15 px-3 py-2 text-sm focus:border-terracotta focus:outline-none"
+              className="w-full rounded-xl border border-charcoal/15 bg-fondo-suave px-3 py-2 text-sm focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
             />
           </div>
           <div>
@@ -110,7 +110,7 @@ export default function Mesas() {
             <select
               value={form.ubicacion}
               onChange={(e) => setForm({ ...form, ubicacion: e.target.value })}
-              className="w-full rounded-lg border border-charcoal/15 px-3 py-2 text-sm focus:border-terracotta focus:outline-none"
+              className="w-full rounded-xl border border-charcoal/15 bg-fondo-suave px-3 py-2 text-sm focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30"
             >
               <option value="interior">Interior</option>
               <option value="terraza">Terraza</option>
@@ -124,7 +124,7 @@ export default function Mesas() {
             <button
               type="submit"
               disabled={guardando}
-              className="flex-1 rounded-full bg-terracotta py-2.5 text-sm font-semibold uppercase text-white transition hover:bg-terracotta-dark disabled:opacity-60"
+              className="flex-1 btn-gold-luxury rounded-full py-2.5 text-sm font-bold uppercase tracking-wide text-carbon disabled:opacity-60"
             >
               {editandoId ? 'Actualizar' : 'Crear'}
             </button>
@@ -144,9 +144,9 @@ export default function Mesas() {
           {loading ? (
             <Spinner label="Cargando mesas..." />
           ) : (
-            <div className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-charcoal/5">
+            <div className="overflow-hidden rounded-2xl bg-papel shadow-md shadow-charcoal/5 ring-1 ring-gold/20">
               <table className="w-full text-left text-sm">
-                <thead className="bg-cream-dark text-xs uppercase text-charcoal/50">
+                <thead className="bg-forest-dark text-[11px] uppercase tracking-wider text-gold">
                   <tr>
                     <th className="px-4 py-3">Número</th>
                     <th className="px-4 py-3">Capacidad</th>
@@ -156,7 +156,7 @@ export default function Mesas() {
                 </thead>
                 <tbody className="divide-y divide-charcoal/5">
                   {mesas.map((mesa) => (
-                    <tr key={mesa.id}>
+                    <tr key={mesa.id} className="transition hover:bg-cream-light">
                       <td className="px-4 py-3 font-medium">Mesa {mesa.numero}</td>
                       <td className="px-4 py-3">{mesa.capacidad} personas</td>
                       <td className="px-4 py-3 capitalize">{mesa.ubicacion}</td>
@@ -164,7 +164,7 @@ export default function Mesas() {
                         <div className="flex justify-end gap-2">
                           <button
                             onClick={() => editar(mesa)}
-                            className="rounded-lg px-2 py-1 text-xs font-semibold text-forest hover:bg-forest/10"
+                            className="rounded-lg px-2 py-1 text-xs font-semibold text-verde hover:bg-forest/10"
                           >
                             Editar
                           </button>
